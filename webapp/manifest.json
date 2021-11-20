@@ -18,6 +18,10 @@
           "localUri": "localService/metadata.xml",
           "odataVersion": "4.0"
         }
+      },
+      "sensorSource": {
+        "type": "JSON",
+        "uri": "./localService/sensors.json"
       }
     }
   },
@@ -38,7 +42,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.96.0",
       "libs": {
@@ -70,6 +74,11 @@
           "earlyRequests": true,
           "groupId": "$direct"
         }
+      },
+      "sensorModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "sensorSource",
+        "preload": true
       }
     },
     "resources": {

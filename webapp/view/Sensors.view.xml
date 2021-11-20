@@ -1,6 +1,8 @@
 <mvc:View
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
+	xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:f="sap.f"
 	displayBlock="true"
 >
 	<Page
@@ -13,6 +15,27 @@
 				class="sapUiResponsiveContentPadding"
 			>
 				<content>
+					<f:GridList
+						id="sensorsList"
+						items="{
+							path: 'sensorModel>/sensors',
+							sorter: {
+								path: 'customer',
+								group: true,
+								descending: false
+							}
+						}"
+						noDataText="{i18n>SensorsView.NoSensors}"
+					>
+						<f:customLayout>
+							<grid:GridBoxLayout/>
+						</f:customLayout>
+						<f:items>
+							<CustomListItem>
+								<Title text="{sensorModel>location}"/>
+							</CustomListItem>
+						</f:items>
+					</f:GridList>
 				</content>
 			</IconTabBar>
 		</content>
