@@ -15,7 +15,8 @@
     "@sap/ux-ui5-tooling": "1"
   },
   "scripts": {
-    "start": "fiori run --open 'test/flpSandbox.html#keepcoolsensormanager-display'",
+    "start": "fiori run --open 'index.html'",
+    "start-flp": "fiori run --open 'test/flpSandbox.html#keepcoolsensormanager-display'",
     "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
     "deploy": "fiori verify",
     "deploy-config": "fiori add deploy-config",

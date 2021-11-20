@@ -25,7 +25,7 @@
 								descending: false
 							}
 						}"
-						noDataText="{i18n>SensorsView.NoSensors}"
+						noDataText="{i18n>noSensorDataText}"
 					>
 						<f:customLayout>
 							<grid:GridBoxLayout/>

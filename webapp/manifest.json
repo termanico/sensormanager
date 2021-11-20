@@ -10,15 +10,6 @@
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
     "dataSources": {
-      "mainService": {
-        "uri": "/sap/opu/odata/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "4.0"
-        }
-      },
       "sensorSource": {
         "type": "JSON",
         "uri": "./localService/sensors.json"
@@ -61,24 +52,17 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "keepcool.sensormanager.i18n.i18n"
-        }
-      },
-      "": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {
-          "synchronizationMode": "None",
-          "operationMode": "Server",
-          "autoExpandSelect": true,
-          "earlyRequests": true,
-          "groupId": "$direct"
+          "bundleName": "keepcool.sensormanager.i18n.i18n",
+          "supportedLocales": [
+            "de",
+            "en"
+          ],
+          "fallbackLocale": "en"
         }
       },
       "sensorModel": {
         "type": "sap.ui.model.json.JSONModel",
-        "dataSource": "sensorSource",
-        "preload": true
+        "dataSource": "sensorSource"
       }
     },
     "resources": {
