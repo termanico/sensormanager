@@ -2,9 +2,11 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/IconColor",
     "sap/m/MessageToast",
-    "sap/ui/model/Filter"
-], function (Controller, IconColor, MessageToast, Filter) {
-    "use strict";
+    "sap/ui/model/Filter",
+    "sap/ui/core/Fragment"
+], function (Controller, IconColor, MessageToast, Filter, Fragment) {
+    "use strict"
+
 
     return Controller.extend("keepcool.sensormanager.controller.Sensors", {
         onInit: function () {
@@ -48,8 +50,24 @@ sap.ui.define([
             }
 
             oBinding.filter(this._aStatusFilters);
+        },
+        onCustomerSelect: function () {
+            if (!this._pDialog) {
+                this._pDialog = Fragment.load({
+                    type: "XML",
+                    name: "keepcool.sensormanager.view.CustomerSelectDialog",
+                    controller: this
+                }).then(function (oDialog) {
+                    oDialog.setModel(this.getSensorModel(), "sensorModel");
+                    oDialog.setModel(this.getView().getModel("i18n"), "i18n");
+                    oDialog.setMultiSelect(true);
+                    return oDialog;
+                }.bind(this));
+            }
+            this._pDialog.then(function (oDialog) {
+                oDialog.open();
+            });
         }
-
     });
 }
 );
