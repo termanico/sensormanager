@@ -16,10 +16,22 @@
 			<VBox class="sapUiContentPadding">
 				<f:Card>
 					<f:header>
-						<card:Header title="{
-							parts: ['i18n>cardTitle', 'sensorModel>customer'],
-							formatter: '.formatMessage'
-						}"/>
+						<card:NumericHeader
+							title="{
+								parts: ['i18n>cardTitle', 'sensorModel>customer'],
+								formatter: '.formatMessage'
+							}"
+							subtitle="{
+								parts: ['i18n>cardSubTitle', 'i18n>locationLabel', 'sensorModel>location', 'i18n>distanceLabel', 'sensorModel>distance', 'i18n>distanceUnit'],
+								formatter: '.formatMessage'
+							}"
+							number="{sensorModel>temperature/value}"
+							scale="{i18n>temperatureUnit}"
+							state="{
+								parts: ['sensorModel>/threshold', 'sensorModel>temperature/value'],
+								formatter: '.formatValueColor'
+							}"
+						/>
 					</f:header>
 					<f:content>
 					</f:content>
