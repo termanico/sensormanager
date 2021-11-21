@@ -10,6 +10,8 @@ sap.ui.define([
 
     return Controller.extend("keepcool.sensormanager.controller.Sensors", {
         onInit: function () {
+            this._aCustomerFilters = [];
+            this._aStatusFilters = [];
             this.getSensorModel().dataLoaded().then(function () {
                 MessageToast.show(
                     this.getOwnerComponent().getModel("i18n").getResourceBundle().getText("msgSensorDataLoaded"),
@@ -32,9 +34,6 @@ sap.ui.define([
             }
         },
         onSensorSelect: function (oEvent) {
-            this._aCustomerFilters = [];
-            this._aStatusFilters = [];
-
             var oBinding = this.getView().byId("sensorsList").getBinding("items"),
                 sKey = oEvent.getParameter("key"),
                 oThreshold = this.getSensorModel().getProperty("/threshold");
@@ -67,6 +66,20 @@ sap.ui.define([
             this._pDialog.then(function (oDialog) {
                 oDialog.open();
             });
+        },
+        onCustomerSelectChange: function (oEvent) {
+            var sValue = oEvent.getParameter("value");
+            var oFilter = new Filter("name", "Contains", sValue);
+            var oBinding = oEvent.getSource().getBinding("items");
+            oBinding.filter([oFilter]);
+        },
+        onCustomerSelectConfirm: function (oEvent) {
+            var aSelectedItems = oEvent.getParameter("selectedItems");
+            var oBinding = this.getView().byId("sensorsList").getBinding("items");
+            this._aCustomerFilters = aSelectedItems.map(function (oItem) {
+                return new Filter("customer", "EQ", oItem.getTitle());
+            });
+            oBinding.filter(this._aCustomerFilters.concat(this._aStatusFilters));
         }
     });
 }
