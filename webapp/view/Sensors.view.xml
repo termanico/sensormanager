@@ -22,7 +22,7 @@
 			<IconTabBar
 				id="iconTabBar"
 				class="sapUiResponsiveContentPadding"
-				select="onSensorSelect"
+				select=".onSensorSelect"
 			>
 				<items>
 					<IconTabFilter
@@ -68,7 +68,10 @@
 							<grid:GridBoxLayout/>
 						</f:customLayout>
 						<f:items>
-							<CustomListItem type="Active">
+							<CustomListItem
+								type="Active"
+								press=".navToSensorStatus"
+							>
 								<layoutData>
 									<FlexItemData
 										growFactor="1"

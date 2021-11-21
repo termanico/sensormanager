@@ -1,11 +1,30 @@
 <mvc:View
+	controllerName="keepcool.sensormanager.controller.SensorStatus"
 	displayBlock="true"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:card="sap.f.cards"
 >
 	<Page
 		id="SensorStatusPage"
 		title="{i18n>titleSensorStatus}"
 		showNavButton="true"
-	/>
+		navButtonPress=".navToSensors"
+	>
+		<content>
+			<VBox class="sapUiContentPadding">
+				<f:Card>
+					<f:header>
+						<card:Header title="{
+							parts: ['i18n>cardTitle', 'sensorModel>customer'],
+							formatter: '.formatMessage'
+						}"/>
+					</f:header>
+					<f:content>
+					</f:content>
+				</f:Card>
+			</VBox>
+		</content>
+	</Page>
 </mvc:View>
