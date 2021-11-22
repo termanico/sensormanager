@@ -84,6 +84,18 @@ sap.ui.define([
         navToSensorStatus: function (oEvent) {
             var iSensorIndex = oEvent.getSource().getBindingContext("sensorModel").getProperty("index");
             this.getOwnerComponent().getRouter().navTo("RouteSensorStatus", { index: iSensorIndex });
+        },
+        formatThermometerColor: function (iTemperature) {
+            var oThreshold = this.getSensorModel().getProperty("/threshold");
+            if (!oThreshold) {
+                return "black";
+            } else if (iTemperature < oThreshold.warm) {
+                return "#1873B4"; // less obtrusive than the standard "blue"
+            } else if (iTemperature >= oThreshold.warm && iTemperature < oThreshold.hot) {
+                return "orange";
+            } else {
+                return "red";
+            }
         }
     });
 }
