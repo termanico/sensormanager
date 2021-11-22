@@ -1,1 +1,8 @@
 /* Enter your custom styles here */
+.thermometer-control {
+  width: 50px;
+  height: 80px;
+  text-align: center;
+  color: white;
+  background-color: gray;
+}
