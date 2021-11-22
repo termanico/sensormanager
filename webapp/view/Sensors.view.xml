@@ -24,6 +24,7 @@
 				id="iconTabBar"
 				class="sapUiResponsiveContentPadding"
 				select=".onSensorSelect"
+				expandable="false"
 			>
 				<items>
 					<IconTabFilter
