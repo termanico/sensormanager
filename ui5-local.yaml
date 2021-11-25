@@ -20,6 +20,7 @@ framework:
     - name: sap.ui.dt
     - name: sap.ui.rta
     - name: themelib_sap_fiori_3
+    - name: themelib_sap_horizon
 server:
   customMiddleware:
     - name: fiori-tools-proxy
